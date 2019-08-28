@@ -70,3 +70,6 @@ typings/
 *.ibd
 *.csv
 *.pug
+*.CSM
+*.opt
+ib*
