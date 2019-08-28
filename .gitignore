@@ -59,3 +59,15 @@ typings/
 
 # next.js build output
 .next
+
+# sql result build output
+.sql
+
+#other ignore 
+.frm
+.MYD
+.MYI
+.ibd
+.csv
+.pug
+.layout.pug
