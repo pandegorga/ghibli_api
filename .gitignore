@@ -64,10 +64,9 @@ typings/
 .sql
 
 #other ignore 
-.frm
-.MYD
-.MYI
-.ibd
-.csv
-.pug
-.layout.pug
+*.frm
+*.MYD
+*.MYI
+*.ibd
+*.csv
+*.pug
