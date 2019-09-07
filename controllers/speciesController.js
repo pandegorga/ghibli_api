@@ -8,11 +8,8 @@ exports.index = function (req, res) {
     Species.find({}, { _id: 0 }, function (err, species) {
         if (err)
             res.json(err);
-    res.json({
-            message: 'species viewed',
-            data: species
-        });
-    }).populate("Film");    
+        res.send(species);
+    })   
 };    
 
 exports.save = function (req, res) {

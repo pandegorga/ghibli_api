@@ -16,13 +16,10 @@ var Location = require('../models/location');
  */ 
 exports.index = function (req, res) {
     // save the contact and check for errors
-    Location.find({}, { _id: 0 }, function (err, species) {
+    Location.find({}, { _id: 0 }, function (err, location) {
         if (err)
             res.json(err);
-    res.json({
-            message: 'location viewed',
-            data: species
-        });
+        res.send(location)    
     });    
 };    
 
@@ -54,10 +51,10 @@ exports.view = function (req, res) {
     Location.aggregate([
         {
             $lookup: {
-            from: "films",
-            localField: "_id",
-            foreignField: "location",
-            as: "films"
+                from: "films",
+                localField: "_id",
+                foreignField: "location",
+                as: "films"
             }
         },
         {
@@ -65,16 +62,12 @@ exports.view = function (req, res) {
                 $and:[{"id" : req.params.id}]
             }
         }   
-    ]).exec(function(err, location) {
+    ])
+    .exec(function() {
         if(err)
-            res.json({status: 500, error: err});
-        res.json(
-            {
-                status: 200, 
-                data: location
-            });            
-    })
-    
+            res.json({ error: err});
+        res.send(location)  
+    })    
 };    
 
 

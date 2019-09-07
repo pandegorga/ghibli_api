@@ -17,20 +17,13 @@ let helperManager       = require('../helpers')
 /**
  * Get all data film
  */ 
-filmController.index = async function (req, res) {
-    let title = "Castle in the Sky"
-    let getFilmById = await helperManager.filmHelper.getFilmByTitle(title).then(film => {
-        return film
-    }).catch(err => console.error(err))
-    console.log(getFilmById.title);
+filmController.index = function (req, res) {
+    // save the contact and check for errors
     Film.find({}, { _id: 0 }, function (err, film) {
         if (err)
             res.json(err);
-    res.json({
-            message: 'film viewed',
-            data: film
-        });
-    });    
+        res.send(film)    
+    });        
 };    
 
 /**

@@ -17,6 +17,5 @@ COPY package.json /package/package.json
 RUN npm install --prefix /package
 # Copy the application
 COPY . /application
-COPY mongo-init.js /docker-entrypoint-initdb.d/
 # By default, run the application with node:
 CMD [ "npm","run", "watch" ]

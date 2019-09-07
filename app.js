@@ -12,5 +12,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', routes);
 app.use('/api', apiRoutes)
 
-
 module.exports = app;

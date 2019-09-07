@@ -1,76 +1,51 @@
 version: "3"
 services:
     web:
-        image: brams.silitonga/simple_web_app
+        image: ghibli_api
         ports:
             - 49160:8080
         volumes:
             - .:/application
         stdin_open: true
         depends_on:
-            - mysql
             - mongo
-        env_file: ./simple_web_app.env
+        env_file: ./ghibli_api.env
         networks:
-            - simple_web_app    
-    mysql:
-        image: mysql:5.6.34 
-        restart: always
-        environment:
-            MYSQL_DATABASE: 'simple_web_app'
-             # So you don't have to use root, but you can if you like
-            MYSQL_USER: 'user'
-            # You can use whatever password you like
-            MYSQL_PASSWORD: 'password'
-            # Password for root access
-            MYSQL_ROOT_PASSWORD: 'root'
-        ports:
-             # <Port exposed> : < MySQL Port running inside container>
-            - '3306:3306'
-        expose:
-            # Opens port 3306 on the container
-            - '3306'
-            # Where our data will be persisted
-        volumes:
-            - ./mysql:/var/lib/mysql
-        networks:
-            - simple_web_app  
-        env_file: ./simple_web_app.env
+            - ghibli_api    
 
     mongo:
         image: mongo
         restart: always
         container_name: mongo        
         environment:
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: example
-            MONGO_INITDB_DATABASE: simple_web_app 
+            MONGO_INITDB_ROOT_USERNAME: ghibli_api_mongo
+            MONGO_INITDB_ROOT_PASSWORD: ghibli_api_mongo_password
+            MONGO_INITDB_DATABASE: ghibli_api
         ports:
             - "27017:27017"  
-        volumes:
-            - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro    
         networks:
-            simple_web_app:
+            ghibli_api:
                 ipv4_address: 172.18.0.3
-        env_file: ./simple_web_app.env
+        volumes:
+            - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+        env_file: ./ghibli_api.env
 
     mongo-express:
         image: mongo-express
         ports:
             - "8081:8081"
         environment:
-            ME_CONFIG_MONGODB_ADMINUSERNAME: root
-            ME_CONFIG_MONGODB_ADMINPASSWORD: example
+            ME_CONFIG_MONGODB_ADMINUSERNAME: ghibli_api_mongo
+            ME_CONFIG_MONGODB_ADMINPASSWORD: ghibli_api_mongo_password
             ME_CONFIG_MONGODB_SERVER: "mongo"
         depends_on:
             - "mongo"       
-        env_file: ./simple_web_app.env
+        env_file: ./ghibli_api.env
         networks:
-            - simple_web_app                    
-
+            - ghibli_api                    
 
 networks:
-    simple_web_app:
+    ghibli_api:
         driver: bridge
         ipam:
          config:

@@ -23,10 +23,7 @@ exports.index = function (req, res) {
     People.find({}, { _id: 0 }, function (err, result) {
         if (err)
             res.json({status: 500, error: err});
-    res.json({
-            status: 200,
-            data: result
-        });
+    res.send(result);
     });    
 };
 

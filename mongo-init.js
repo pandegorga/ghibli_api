@@ -1,12 +1,12 @@
 db.createUser(
-  {
-      user: "bram",
-      pwd: "bram123",
-      roles: [
-          {
-              role: "readWrite",
-              db: "simple_web_app"
-          }
-      ]
-  }
+    {
+        user: "ghibli_api_mongo",
+        pwd: "ghibli_api_mongo_password",
+        roles: [
+            {
+                role: "readWrite",
+                db: "ghibli_api"
+            }
+        ]
+    }
 );

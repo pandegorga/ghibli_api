@@ -23,10 +23,7 @@ exports.index = function (req, res) {
     Vehicle.find({}, { _id: 0 }, function (err, species) {
         if (err)
             res.json(err);
-    res.json({
-            message: 'species viewed',
-            data: species
-        });
+        res.send(species)
     });    
 };    
 

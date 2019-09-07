@@ -14,7 +14,7 @@ let serverConfig = {
         name        : "mongodb",
         connector   : "mongodb",
         url         : process.env.dbUrl || "mongodb://127.0.0.1:27017/demo",
-        database    : "simple_web_app",
+        database    : "ghibli_api",
         user        : "",
         password    : "",
     },
@@ -33,13 +33,14 @@ if(process.env.NODE_ENV === "development"){
     serverConfig.mongodb.user           =   "";
     serverConfig.mongodb.password       =   "";
 }
+
 else if( process.env.NODE_ENV === "production"){
 
-    serverConfig.mongodb.url            =   process.env.dbUrl || "mongodb://127.0.0.1:27017/demo";
-    serverConfig.mongodb.database       =   "simple_web_app";
-    serverConfig.mongodb.user           =   "bram";
-    serverConfig.mongodb.password       =   "bram123";
-    serverConfig.port                   =   process.env.serverPort || "4001";
+    serverConfig.mongodb.url            =   process.env.dbUrl;
+    serverConfig.mongodb.database       =   "ghibli_api";
+    serverConfig.mongodb.user           =   "ghibli_mongo";
+    serverConfig.mongodb.password       =   "ghibli_mongo_password";
+    serverConfig.port                   =   process.env.serverPort;
 }
 
 /** exporting server configuration **/

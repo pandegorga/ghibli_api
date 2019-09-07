@@ -30,4 +30,4 @@ const LocationSchema = new mongoose.Schema({
   }
 }, { versionKey: false });
 
-module.exports = mongoose.model('location', LocationSchema);
+module.exports = mongoose.model('Location', LocationSchema);

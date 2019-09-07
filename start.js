@@ -11,9 +11,9 @@
 const app             = require('./app.js');
 const db_config       = require('./config'); 
 const mongoose        = require('mongoose');
-const conn           =  mongoose.createConnection(db_config.dbConfig.mongodb.url );
+const conn           =  mongoose.createConnection(db_config.dbConfig.mongodb.url);
 
-mongoose.connect("mongodb://bram:bram123@172.18.0.3:27017/simple_web_app", { useMongoClient: true });
+mongoose.connect(db_config.dbConfig.mongodb.url, { useMongoClient: true });
 conn.Promise = global.Promise;
 conn.on('connected', () => {
     console.log(`Mongoose connection open on ${db_config.dbConfig.mongodb.url}`);

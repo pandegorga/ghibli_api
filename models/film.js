@@ -3,12 +3,13 @@ const mongoose = require('mongoose');
 const FilmSchema = new mongoose.Schema({
   id: {
     type: String,
+    required:true,
     trim: true,
   },
   title: {
     type: String,
     trim: true,
-    unique: true
+    // unique: true
   },
   description: {
     type: String,
@@ -33,7 +34,6 @@ const FilmSchema = new mongoose.Schema({
   people: {type: mongoose.Schema.Types.ObjectId, ref:'People'},
   location: {type: mongoose.Schema.Types.ObjectId, ref: 'Location' },    
   species: {type: mongoose.Schema.Types.ObjectId, ref: 'Species' },    
-
 }, { versionKey: false });
 
 module.exports = mongoose.model('Film', FilmSchema);
