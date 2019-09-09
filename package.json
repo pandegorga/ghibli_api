@@ -7,7 +7,7 @@
   "scripts": {
     "watch": "nodemon /application/start.js", 
     "test": "mocha test/**/*.js"    
-  },
+    },
   "dependencies": {
     "body-parser": "^1.18.2",
     "concurrently": "^4.1.2",
