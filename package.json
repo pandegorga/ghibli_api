@@ -6,7 +6,7 @@
   "main": "/application/start.js",
   "scripts": {
     "watch": "nodemon /application/start.js", 
-    "test": "nodemon --exec 'mocha test/**/*.js -R min --timeout 10'"    
+    "test": "mocha test/**/*.js"    
   },
   "dependencies": {
     "body-parser": "^1.18.2",
