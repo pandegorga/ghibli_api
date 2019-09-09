@@ -1,0 +1,33 @@
+{
+  "name": "ghibli_api",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "Brams silitonga <brampande@gmail.com>",
+  "main": "/application/start.js",
+  "scripts": {
+    "watch": "nodemon /application/start.js", 
+    "test": "nodemon --exec 'mocha test/**/*.js -R min --timeout 10'"    
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "concurrently": "^4.1.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "express-validator": "^4.3.0",
+    "http-auth": "^3.2.3",
+    "mocha": "^6.2.0",
+    "mongoose": "^4.13.9",
+    "mongoose-auto-increment": "^5.0.1",
+    "pug": "^2.0.0-rc.4",
+    "uid-generator": "^2.0.0",
+    "chai": "^4.2.0",
+    "sinon-chai":"^3.0.0",
+    "sinon":"^7.4.2"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.0",
+    "nodemon": "^1.14.10",
+    "forever":"1.0.0"            
+  },
+  "license": "ISC"
+}

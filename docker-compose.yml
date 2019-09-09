@@ -1,0 +1,52 @@
+version: "3"
+services:
+    web:
+        image: ghibli_api
+        ports:
+            - 49160:8080
+        volumes:
+            - .:/application
+        stdin_open: true
+        depends_on:
+            - mongo
+        env_file: ./ghibli_api.env
+        networks:
+            - ghibli_api    
+
+    mongo:
+        image: mongo
+        restart: always
+        container_name: mongo        
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ghibli_api_mongo
+            MONGO_INITDB_ROOT_PASSWORD: ghibli_api_mongo_password
+            MONGO_INITDB_DATABASE: ghibli_api
+        ports:
+            - "27017:27017"  
+        networks:
+            ghibli_api:
+                ipv4_address: 172.18.0.3
+        volumes:
+            - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+        env_file: ./ghibli_api.env
+
+    mongo-express:
+        image: mongo-express
+        ports:
+            - "8081:8081"
+        environment:
+            ME_CONFIG_MONGODB_ADMINUSERNAME: ghibli_api_mongo
+            ME_CONFIG_MONGODB_ADMINPASSWORD: ghibli_api_mongo_password
+            ME_CONFIG_MONGODB_SERVER: "mongo"
+        depends_on:
+            - "mongo"       
+        env_file: ./ghibli_api.env
+        networks:
+            - ghibli_api                    
+
+networks:
+    ghibli_api:
+        driver: bridge
+        ipam:
+         config:
+           - subnet: "172.18.0.0/16"
