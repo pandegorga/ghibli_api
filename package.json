@@ -16,7 +16,7 @@
     "express-validator": "^4.3.0",
     "http-auth": "^3.2.3",
     "mocha": "^6.2.0",
-    "mongoose": "^4.13.9",
+    "mongoose": "^5.7.5",
     "mongoose-auto-increment": "^5.0.1",
     "pug": "^2.0.0-rc.4",
     "uid-generator": "^2.0.0",
