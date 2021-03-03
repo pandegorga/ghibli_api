@@ -18,7 +18,7 @@
     "mocha": "^6.2.0",
     "mongoose": "^4.13.9",
     "mongoose-auto-increment": "^5.0.1",
-    "pug": "^2.0.0-rc.4",
+    "pug": "^3.0.1",
     "uid-generator": "^2.0.0",
     "chai": "^4.2.0",
     "sinon-chai":"^3.0.0",
